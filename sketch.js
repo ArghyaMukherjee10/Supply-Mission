@@ -73,16 +73,18 @@ function draw() {
  
   packageSprite.x= packageBody.position.x
   packageSprite.y= packageBody.position.y 
-  packageBody.position.x = helicopterSprite.x
+ // packageBody.position.x = helicopterSprite.x
  // packageBody.position.y = helicopterSprite.y
 
-  
-  if(keyCode === LEFT_ARROW){
-	helicopterSprite.x -= 1;
- }
+	if(keyCode === LEFT_ARROW){
+	helicopterSprite.x=helicopterSprite.x-2;    
+    translation={x:-2,y:0}
+    Matter.Body.translate(packageBody, translation)
 
-  if(keyCode === RIGHT_ARROW){
-	helicopterSprite.x += 1;
+ }else if(keyCode === RIGHT_ARROW){
+	helicopterSprite.x=helicopterSprite.x+2;
+    translation={x:2,y:0}
+    Matter.Body.translate(packageBody, translation)
  }
  if (keyCode === DOWN_ARROW) {
 	Matter.Body.setStatic(packageBody,false); 
@@ -92,3 +94,6 @@ function draw() {
   
  
 }
+
+  
+ 
